@@ -1,242 +1,347 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=0.7in]{geometry}
 \usepackage{enumitem}
-\usepackage{graphicx}
-\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{hyperref}
 
-% -----------------------------------------------------
-% bvraghav-tiet-ucs503p-article.sty
-% -----------------------------------------------------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
 
-% Variable: Lab Instructor
-\makeatletter \newcommand{\BvrSetLabInstructor}[1]{%
-  \gdef\Bvr@LabInstructor{#1}}
-% default
-\newcommand{\Bvr@LabInstructor}{Dr. Raghav %
-  B. Venkataramaiyer}
-% public accessor
-\newcommand{\BvrLabInstructorValue}{\Bvr@LabInstructor}
-\makeatother
+\titleformat{\section}
+{\large\bfseries}
+{\thesection}
+{1em}
+{}
 
-% Add subtitle
-\usepackage{titling}
-% -- Set title bold
-\pretitle{\begin{center}\bfseries\fontsize{18bp}{18bp}\selectfont}
-\makeatletter
-\newcommand{\BvrSubtitle}[1]{%
-  \posttitle{%
-    \par\end{center}
-    \begin{center}\large#1\end{center}
-    \vskip 0.5em}%
-}
-\makeatother
-
-% Hints in the section title(s)
-\newcommand{\BvrHint}[1]{%
-  {\normalfont\normalsize\itshape\hfill #1}}
-
-% -----------------------------------------------------
-
-\title{Grievance-Resolution System for a Tier-2/3 City}
-
-\BvrSetLabInstructor{Dr. Raghav B. Venkataramaiyer}
-
-\BvrSubtitle{%
-  Project Proposal for UCS503P  \\
-  Submitted to: \BvrLabInstructorValue \\ \bfseries
-  Thapar Institute of Engineering and Technology% 
-}
-
-\author{
-  Vidya Vaidyanathan, CSED%
-  \thanks{Roll No: \texttt{1024030xxx}, %
-    Email: \texttt{vvaidhanathan\_be24\@thapar.edu}}
-  \and 
-  Bhanurekha Ganesan, CSED%
-  \thanks{Roll No: \texttt{1024030xxx}, %
-    Email: \texttt{bganesan\_be24\@thapar.edu}}
-}
-
-\date{\today}
+\titleformat{\subsection}
+{\normalsize\bfseries}
+{\thesubsection}
+{1em}
+{}
 
 \begin{document}
-\maketitle
 
-\section{Higher-order goal%
-  \BvrHint{\ldots secondary framing}}
-This project aims to improve sustainable urban
-governance by reducing the time and effort required to
-resolve citizen issues. While the topic is broader than
-any single municipality, the immediate engineering
-objective is to translate \emph{efficient public
-  service delivery} into a measurable, deployable
-software solution.
+\begin{center}
 
-\section{Time-to-value %
-\BvrHint{\ldots primary heuristic}}
-\begin{itemize}[leftmargin=0.7cm]
-    \item We will deliver meaningful increments quickly by prototyping the core user workflow and validating it with users within a short iteration window.
-    \item We will prioritize fast feedback over perfection by using weekly iterations (and targeting CI-backed automation early) to reduce release friction.
-    \item Success is defined by what can be delivered and measured in the first iteration, then improved based on user feedback.
-\end{itemize}
+{\Large \textbf{Distributed Search Engine}}\\
+\vspace{5pt}
+
+{\large Project Proposal}\\
+\vspace{6pt}
+
+Submitted to: Dr. Jeelani\\
+\vspace{3pt}
+
+\textbf{Thapar Institute of Engineering and Technology}\\
+\vspace{4pt}
+
+Department of Computer Science and Engineering\\
+\vspace{10pt}
+
+Hitesh, CSED\hspace{20pt}
+Agambir Singh, CSED\hspace{20pt}
+Nityam Mantri, CSED
+
+\vspace{4pt}
+
+August 2026
+
+\end{center}
+
+
+\section{Higher-order goal}
+
+This project aims to design and develop a \textbf{scalable distributed search engine} capable of efficiently indexing, processing, and retrieving information from large document collections. The primary objective is to build a production-oriented search platform that overcomes the limitations of traditional single-node search systems through \textbf{distributed architecture, efficient indexing techniques, and relevance-based ranking mechanisms}.
+
+The system focuses on applying modern backend engineering principles, \textbf{microservices architecture}, and distributed computing techniques. The project emphasizes practical implementation of concepts such as service communication, concurrency management, caching, fault tolerance, and containerized deployment.
+
 
 \section{Problem Statement}
-Citizens in a tier-2/3 Indian city face delays and uncertainty when reporting local issues (e.g., streetlight outages, water leakage, garbage accumulation, road potholes). Common pain points include:
-\begin{itemize}[leftmargin=0.7cm]
-    \item \textbf{Fragmentation:} complaints are often made via multiple channels (calls, social media, paper forms), causing lost context.
-    \item \textbf{Low transparency:} citizens cannot easily see the status of their complaint (e.g., ``received'', ``assigned'', ``in progress'', ``resolved'').
-    \item \textbf{Slow coordination:} departments/field teams lack a unified, trackable workflow with clear ownership.
-    \item \textbf{Poor data quality:} duplicate or incomplete reports force rework and extend resolution time.
+
+Modern applications generate massive volumes of structured and unstructured textual data that require efficient retrieval mechanisms. Traditional single-server search systems face limitations when handling large datasets and increasing user traffic.
+
+A scalable search engine requires optimized indexing structures, parallel query processing, and intelligent ranking methods to provide fast and accurate results.
+
+Common challenges include:
+
+\begin{itemize}
+
+\item \textbf{Limited scalability:} A single search server becomes a performance bottleneck as the document collection and number of concurrent users increase. The system requires horizontal scaling through distributed search nodes.
+
+\item \textbf{High query latency:} Sequential searching over large collections results in increased response time. Efficient indexing and parallel query execution are required to achieve low latency retrieval.
+
+\item \textbf{Poor fault tolerance:} Failure of a single component can impact the complete search workflow. Distributed services improve reliability by isolating failures.
+
+\item \textbf{Limited search relevance:} Traditional keyword matching may fail to understand semantic relationships between queries and documents. Combining keyword-based ranking with semantic similarity improves retrieval quality.
+
 \end{itemize}
 
-\textbf{Why this matters now (contextual relevance):} In an urban setting with limited staff bandwidth, even small process improvements can noticeably reduce resolution delays and repeated submissions.
 
-\section{Proposed Solution %
-\BvrHint{\ldots Software Proposition}}
+\section{Proposed Solution}
+
 \subsection{Overview}
-Build a \textbf{web-based} ``Grievance-to-Resolution'' system with the following components:
-\begin{itemize}[leftmargin=0.7cm]
-    \item \textbf{Citizen submission portal:} users submit an issue with photo (optional), category, and locality/ward.
-    \item \textbf{Automated triage:} basic duplicate detection and completeness checks.
-    \item \textbf{Department workflow:} assign issues to relevant department/team and update statuses.
-    \item \textbf{Status transparency:} citizens track status and receive notifications when resolved.
-    \item \textbf{Admin/ops dashboard:} performance summaries (resolution time, backlog).
+
+The proposed system is a \textbf{distributed search engine}. The architecture separates different responsibilities such as document ingestion, indexing, query processing, ranking, and storage into independent services.
+
+The system distributes search operations across multiple \textbf{search shards}, where each shard maintains a portion of the indexed data. A central coordinator manages incoming queries, communicates with shards, and combines results to generate the final ranked response.
+
+The major components include:
+
+\begin{itemize}
+
+\item \textbf{Document ingestion service:} Responsible for collecting documents, performing preprocessing operations, and preparing data for indexing.
+
+\item \textbf{Indexing service:} Generates and maintains \textbf{inverted indexes} that allow efficient document retrieval.
+
+\item \textbf{Query coordinator:} Handles incoming search requests and manages communication between users and search services.
+
+\item \textbf{Search shard services:} Maintain distributed portions of the index and execute queries in parallel.
+
+\item \textbf{Ranking module:} Improves result ordering using relevance scoring techniques such as \textbf{BM25 ranking} and semantic similarity.
+
+\item \textbf{Caching layer:} Reduces repeated query processing time and improves system responsiveness.
+
 \end{itemize}
+
 
 \subsection{Core workflow}
-\begin{enumerate}[leftmargin=0.7cm]
-    \item Citizen creates a complaint and receives a complaint ID immediately.
-    \item System validates completeness and suggests possible duplicates (lightweight similarity on text/category and approximate location).
-    \item Department staff update status (Received $\rightarrow$ Assigned $\rightarrow$ In Progress $\rightarrow$ Resolved).
-    \item Citizen views status updates and resolution notes.
+
+\begin{enumerate}
+
+\item Documents are collected through the ingestion pipeline and processed using text normalization and tokenization techniques.
+
+\item The indexing service creates an \textbf{inverted index structure} that maps terms to relevant documents.
+
+\item Index data is distributed among multiple search shards to enable parallel retrieval.
+
+\item User queries are received by the coordinator service.
+
+\item The coordinator performs concurrent searches across multiple shards.
+
+\item Results from different shards are merged using a \textbf{Top-K ranking algorithm}.
+
+\item The final ranked documents are returned to the user.
+
 \end{enumerate}
 
-\subsection{Operational constraints for an educational, tier-2/3 setting}
-\begin{itemize}[leftmargin=0.7cm]
-    \item Keep the solution usable on low-to-mid range devices via responsive web design.
-    \item Avoid dependence on advanced research algorithms; focus on workflow, automation, and system correctness.
-    \item Design for deployability using common web hosting and managed databases.
+
+\section{Solution Approach}
+
+This project focuses on building a \textbf{scalable backend system} using distributed system principles rather than developing new search algorithms. The objective is to integrate existing information retrieval methods into a reliable software architecture.
+
+
+\subsection{Indexing and retrieval}
+
+The search engine uses an \textbf{inverted index} as the primary data structure for efficient document retrieval.
+
+The indexing pipeline includes:
+
+\begin{itemize}
+
+\item \textbf{Text normalization and tokenization:} Converts raw documents into searchable representations.
+
+\item \textbf{Keyword extraction:} Identifies important terms required for efficient indexing.
+
+\item \textbf{Index generation:} Creates document-term mappings for fast retrieval.
+
+\item \textbf{Efficient storage:} Maintains indexed information for quick access during search operations.
+
 \end{itemize}
 
-\section{Solution Approach %
-\BvrHint{\ldots Engineering focus}}
-This is an engineering course project, so we focus on scalable administrative and workflow aspects rather than novel algorithm research.
 
-\subsection{Duplicate/quality assistance %
-\BvrHint{\ldots non-research}}
-Duplicate detection will be heuristic-based:
-\begin{itemize}[leftmargin=0.7cm]
-    \item Normalize text (category + short description keywords).
-    \item Use a simple similarity measure (e.g., token overlap / TF-IDF cosine with threshold) without claiming state-of-the-art.
-    \item Show top candidate duplicates to staff for decision; never fully auto-delete or auto-reject.
+The ranking system combines traditional information retrieval methods with semantic search techniques:
+
+\begin{itemize}
+
+\item \textbf{BM25 based scoring:} Calculates keyword relevance between queries and documents.
+
+\item \textbf{Vector embedding similarity:} Captures semantic relationships between queries and documents.
+
+\item \textbf{Hybrid ranking:} Combines multiple ranking signals to improve search accuracy.
+
 \end{itemize}
 
-\subsection{Web architecture %
-\BvrHint{\ldots web-based solution}}
-A typical 3-tier web architecture:
-\begin{itemize}[leftmargin=0.7cm]
-    \item \textbf{Frontend:} responsive UI for citizens and staff (status pages, submission form, dashboard).
-    \item \textbf{Backend API:} authentication, complaint submission, status transitions, assignment logic.
-    \item \textbf{Database:} store users, complaints, status history, attachments metadata.
+
+\subsection{Distributed architecture}
+
+The system follows a \textbf{microservice-based architecture} consisting of:
+
+\begin{itemize}
+
+\item \textbf{Search Coordinator:} Receives queries, distributes requests, and performs final result aggregation.
+
+\item \textbf{Search Shards:} Maintain independent portions of the search index and process queries concurrently.
+
+\item \textbf{Indexer Service:} Creates, updates, and manages search indexes.
+
+\item \textbf{Storage Layer:} Stores documents, metadata, and persistent application information.
+
 \end{itemize}
 
-\subsection{CI/CD and fast delivery enabler}
-CI/CD will be used to:
-\begin{itemize}[leftmargin=0.7cm]
-    \item Automatically build and run tests on every change.
-    \item Produce repeatable deployment artifacts to staging.
-    \item Enable safe and frequent releases of incremental features.
+
+\subsection{Service communication and coordination}
+
+The system will use:
+
+\begin{itemize}
+
+\item \textbf{REST APIs} for external user communication.
+
+\item \textbf{gRPC communication} for efficient internal service communication.
+
+\item \textbf{Service discovery} for dynamically locating available components.
+
+\item \textbf{Docker containers} for deployment and service isolation.
+
 \end{itemize}
 
-\section{Evaluation Criterion %
-\BvrHint{\ldots measurable and attributable}}
-We define success using measurable metrics tied to the core workflow.
 
-\subsection{Primary evaluation metric}
-\textbf{Time-to-acknowledgement (TTA):} time between complaint submission and ``Received/Assigned'' status creation in the system.
-\begin{itemize}[leftmargin=0.7cm]
-    \item Target: median TTA $\le$ 2 hours during pilot window.
-    \item Attribution: measured from database timestamps (submission vs. first status update by staff).
+\section{Evaluation Criterion}
+
+The system will be evaluated using measurable performance, scalability, and search quality metrics.
+
+\subsection{Primary evaluation metrics}
+
+\textbf{Query latency:}
+
+Measures the time required between receiving a query and returning ranked results.
+
+\begin{itemize}
+\item Target: Maintain low response time under increasing document size and query load.
 \end{itemize}
+
+
+\textbf{Search relevance:}
+
+Measures the quality of retrieved documents based on ranking accuracy.
+
+\begin{itemize}
+\item Evaluated by comparing returned results with expected relevant documents.
+\end{itemize}
+
 
 \subsection{Secondary evaluation metrics}
-\begin{itemize}[leftmargin=0.7cm]
-    \item \textbf{Resolution time reduction:} reduce time-to-resolved compared to baseline process (even if baseline is collected via survey).
-    \item \textbf{Duplicate rate:} percentage of complaints flagged as duplicates and resolved without rework.
-    \item \textbf{User clarity:} citizen-reported clarity of status using a simple 1--5 feedback question.
-    \item \textbf{Reliability:} availability of staging/production for login and submission during business hours (e.g., $\ge$ 99\% uptime in pilot).
+
+\begin{itemize}
+
+\item \textbf{Indexing throughput:} Measures the rate at which documents can be processed and indexed.
+
+\item \textbf{Queries processed per second:} Evaluates system handling capacity.
+
+\item \textbf{Cache hit ratio:} Measures the effectiveness of the caching layer.
+
+\item \textbf{System availability:} Evaluates reliability during operation.
+
+\item \textbf{Resource utilization:} Measures CPU and memory usage under concurrent workloads.
+
 \end{itemize}
 
-\subsection{Pilot validation plan %
-\BvrHint{\ldots high-level}}
-\begin{itemize}[leftmargin=0.7cm]
-    \item Recruit 10--20 pilot users (citizens) and 3--5 staff roles (department simulation if real staff unavailable).
-    \item Compare metrics before/after within the iteration window by logging baseline estimates via short interviews or existing process observations.
+
+\section{Scalability}
+
+The system is designed to support increasing document collections and user traffic through distributed processing.
+
+Scalability will be achieved through:
+
+\begin{itemize}
+
+\item \textbf{Horizontal scaling} of search shard services.
+
+\item \textbf{Stateless backend services} allowing independent deployment.
+
+\item \textbf{Distributed indexing} for handling large document collections.
+
+\item \textbf{Database optimization} using indexing and efficient queries.
+
+\item \textbf{Containerized deployment} for flexible infrastructure management.
+
+\item \textbf{Parallel query execution} for reducing response time.
+
 \end{itemize}
 
-\section{Scalability %
-\BvrHint{\ldots with foresight}}
-The proposition should scale in both theoretical and practical senses.
-
-\begin{enumerate}[leftmargin=0.7cm]
-    \item \textbf{Scalable (theoretically):} The system should support growth in number of complaints and concurrent dashboard usage by:
-    \begin{itemize}[leftmargin=0.7cm]
-        \item decoupling components (frontend/backend),
-        \item enabling pagination and indexing for common queries,
-        \item using stateless API design.
-    \end{itemize}
-    
-    \item \textbf{Operationally deployable (practically):} The system should run on common web hosting:
-    \begin{itemize}[leftmargin=0.7cm]
-        \item managed database,
-        \item containerized or platform-hosted deployment,
-        \item CI/CD pipeline for staging/production.
-    \end{itemize}
-\end{enumerate}
 
 \section{Engine availability heuristic}
-A mature set of ``engines'' (tooling/services) is available to implement this as a web-based project:
-\begin{itemize}[leftmargin=0.7cm]
-    \item Web framework for REST APIs and templated/reactive pages.
-    \item Managed relational or document database.
-    \item Authentication approach (token-based or session-based).
-    \item Object storage for optional attachments (or local storage for pilot).
-    \item Test framework for unit/integration tests.
-    \item CI runner and staging deployment target.
-\end{itemize}
-We will use these mature components to focus on workflow design, correctness, and measurement rather than inventing new infrastructure.
 
-\section{Project scope and deliverables %
-\BvrHint{\ldots iteration-friendly}}
-\subsection{Initial deliverable %
-\BvrHint{\ldots first iteration}}
-\begin{itemize}[leftmargin=0.7cm]
-    \item Citizen submission form + complaint ID generation
-    \item Staff workflow: update status and assignment
-    \item Citizen status page: view timeline/history
-    \item Basic logging and timestamps for TTA measurement
-    \item CI: build + backend unit tests + linting
-    \item CD to staging with a single command or pipeline job
+The project will use mature software components to focus on system design, implementation, and scalability.
+
+The technology stack includes:
+
+\begin{itemize}
+
+\item \textbf{Java Spring Boot} for backend microservices.
+
+\item \textbf{PostgreSQL} for persistent storage.
+
+\item \textbf{Redis} for caching frequently accessed queries.
+
+\item \textbf{gRPC} for service-to-service communication.
+
+\item \textbf{Docker} for deployment and service management.
+
+\item \textbf{Monitoring tools} for observing system performance.
+
 \end{itemize}
+
+
+\section{Project scope and deliverables}
+
+\subsection{Initial deliverable}
+
+\begin{itemize}
+
+\item Document ingestion pipeline.
+
+\item Search API implemented using Spring Boot.
+
+\item Basic inverted index implementation.
+
+\item Query processing service.
+
+\item Ranking module.
+
+\item Docker based local deployment.
+
+\end{itemize}
+
 
 \subsection{Subsequent deliverables}
-\begin{itemize}[leftmargin=0.7cm]
-    \item Lightweight duplicate suggestions with staff review
-    \item Notification layer (email/SMS optional in later iteration; can start with in-app notifications)
-    \item Admin dashboard for metrics and backlog
-    \item Improved search/filtering and indexed queries for scale readiness
+
+\begin{itemize}
+
+\item Distributed shard-based search architecture.
+
+\item Parallel query execution.
+
+\item Redis caching layer.
+
+\item Semantic search using embeddings.
+
+\item Monitoring and performance analysis dashboard.
+
 \end{itemize}
+
 
 \section{Risks and mitigations}
-\begin{itemize}[leftmargin=0.7cm]
-    \item \textbf{Data privacy / consent:} minimize collected data; keep attachments optional; store only what is needed.
-    \item \textbf{Staff adoption:} provide an easy UI for status updates; keep workflow steps minimal; include shortcuts.
-    \item \textbf{Evaluation measurement ambiguity:} instrument timestamps and define clear status transitions before development begins.
-    \item \textbf{Operational issues in pilot:} use staging early; ensure CI/CD produces repeatable deployments.
+
+\begin{itemize}
+
+\item \textbf{Scalability issues:} Addressed through distributed architecture and horizontal scaling.
+
+\item \textbf{Search quality limitations:} Improved through hybrid ranking combining keyword and semantic methods.
+
+\item \textbf{Service failures:} Managed through monitoring and fault-tolerant communication.
+
+\item \textbf{Performance bottlenecks:} Reduced using caching and optimized indexing strategies.
+
 \end{itemize}
 
+
 \section{Summary}
-This project proposes a deployable web platform to reduce grievance handling delays in a tier-2/3 city context. It meets the course criteria by emphasizing time-to-value through rapid iterations, implementing CI/CD to support frequent safe releases, and using measurable evaluation criteria (especially time-to-acknowledgement). It remains focused on engineering workflow and scalability readiness rather than research-driven novelty.
+
+This project proposes a \textbf{distributed search engine implemented using Java Spring Boot and modern backend technologies}. The system combines efficient indexing, distributed query processing, caching, and relevance-based ranking to provide fast and accurate search results.
+
+The project demonstrates practical distributed systems engineering concepts including \textbf{microservices, concurrency, scalability, fault tolerance, and reliable deployment practices}. The final system aims to provide a strong foundation for building production-level search infrastructure.
+
 
 \end{document}
