@@ -1,7 +1,5 @@
 # Project Journal
 
-## Project: Distributed Search Engine
-
 ### Work Completed So Far
 
 #### 1. Understanding the Project Requirements
@@ -17,15 +15,17 @@ I learned about the main requirements and concepts involved in the project, incl
 - Fault tolerance and scalability
 - Microservices-based architecture
 
-The project proposal describes separate services for document ingestion, indexing, query coordination, search shards, ranking, and caching.
+#### 2. Learning Java
 
-#### 2. Learning Spring Boot
+I started learning Java, which will be used as the primary programming language for developing the backend services of the Distributed Search Engine. I studied the basic concepts of Java , java syntax and classes and objects in Java.
+
+#### 3. Learning Spring Boot
 
 I also started learning **Spring Boot**, which will be used to develop the backend microservices and Search API for the project.
 
 I studied the basic requirements and concepts needed to work with Spring Boot and understand how it can be used to develop the backend services of the search engine.
 
-#### 3. Preparing the Use Case Diagram
+#### 4. Preparing the Use Case Diagram
 
 I prepared the **Use Case Diagram** for the project after studying the project requirements and workflow.
 
