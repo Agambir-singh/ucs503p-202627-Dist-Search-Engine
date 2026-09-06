@@ -1,0 +1,83 @@
+<mxfile host="app.diagrams.net" agent="Claude">
+  <diagram name="Use Case Diagram" id="usecase1">
+    <mxGraphModel dx="1030" dy="574" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="750" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontSize=14;align=center;spacingTop=8;" value="System Boundary: Distributed Search Engine Platform" vertex="1">
+          <mxGeometry height="490" width="490" x="300" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="actorUser" parent="1" style="shape=umlActor;whiteSpace=wrap;html=1;verticalLabelPosition=bottom;verticalAlign=top;fontSize=13;fontStyle=1;" value="User" vertex="1">
+          <mxGeometry height="80" width="40" x="40" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="actorAdmin" parent="1" style="shape=umlActor;whiteSpace=wrap;html=1;verticalLabelPosition=bottom;verticalAlign=top;fontSize=13;fontStyle=1;" value="System Admin" vertex="1">
+          <mxGeometry height="80" width="40" x="40" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="uc1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E6E6FA;strokeColor=#000000;fontSize=12;" value="Search Document" vertex="1">
+          <mxGeometry height="60" width="180" x="320" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="uc2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E6E6FA;strokeColor=#000000;fontSize=12;" value="Execute Parallel&#xa;Shard Search" vertex="1">
+          <mxGeometry height="60" width="180" x="590" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="uc3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E6E6FA;strokeColor=#000000;fontSize=12;" value="BM25 + Vector Embeddings" vertex="1">
+          <mxGeometry height="60" width="180" x="590" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="uc5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E6E6FA;strokeColor=#000000;fontSize=12;" value="View Ranked&#xa;Search Results" vertex="1">
+          <mxGeometry height="60" width="180" x="320" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="gx5Lwfy4s6PiuzssbU1W-6" edge="1" parent="1" source="uc8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" target="uc3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gx5Lwfy4s6PiuzssbU1W-7" connectable="0" parent="gx5Lwfy4s6PiuzssbU1W-6" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="include" vertex="1">
+          <mxGeometry relative="1" x="-0.2785" y="-2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uc8" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E6E6FA;strokeColor=#000000;fontSize=12;" value="Ingest &amp; Index&#xa;Documents" vertex="1">
+          <mxGeometry height="60" width="180" x="320" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="uc9" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E6E6FA;strokeColor=#000000;fontSize=12;" value="Manage Search&#xa;Shard Cluster" vertex="1">
+          <mxGeometry height="60" width="180" x="320" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="gx5Lwfy4s6PiuzssbU1W-2" edge="1" parent="1" source="uc10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;sourcePerimeterSpacing=0;dashed=1;" target="uc1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="510.01" />
+              <mxPoint x="520" y="240.01" />
+              <mxPoint x="410" y="240.01" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gx5Lwfy4s6PiuzssbU1W-5" connectable="0" parent="gx5Lwfy4s6PiuzssbU1W-2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="include" vertex="1">
+          <mxGeometry relative="1" x="-0.2145" as="geometry">
+            <mxPoint y="39" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uc10" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E6E6FA;strokeColor=#000000;fontSize=12;" value="Delete Document" vertex="1">
+          <mxGeometry height="60" width="180" x="320" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="actorUser" style="edgeStyle=none;html=1;endArrow=none;" target="uc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="actorUser" style="edgeStyle=none;html=1;endArrow=none;" target="uc5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="actorAdmin" style="edgeStyle=none;html=1;endArrow=none;" target="uc8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="actorAdmin" style="edgeStyle=none;html=1;endArrow=none;" target="uc9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="actorAdmin" style="edgeStyle=none;html=1;endArrow=none;" target="uc10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc1" edge="1" parent="1" source="uc1" style="edgeStyle=none;html=1;dashed=1;endArrow=open;fontSize=10;" target="uc2" value="include">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc2" edge="1" parent="1" source="uc1" style="edgeStyle=none;html=1;dashed=1;endArrow=open;fontSize=10;" target="uc3" value="include">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
