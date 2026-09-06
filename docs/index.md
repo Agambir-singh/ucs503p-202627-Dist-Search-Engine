@@ -1,5 +1,20 @@
+Thapar Institute of Engineering and Technology
+Department of Computer Science and Engineering (CSED)
 
 # Distributed Search Engine
+
+Author(s):
+- Nityam Mantri (Roll No: 1024240002)
+- Hitesh (Roll No: 1024240021)
+- Agambir Singh (Roll No: 1024240032)
+
+Submitted to: Dr. Jeelani
+
+August 2026
+
+---
+
+## Project Overview
 
 Distributed Search Engine is a scalable, production-oriented search platform built with Java Spring Boot, designed to overcome the limitations of traditional single-node search systems. It separates document ingestion, indexing, query processing, ranking, and storage into independent services, distributing search operations across multiple shards for horizontal scalability, low query latency, and fault tolerance. A hybrid ranking approach combines BM25 keyword scoring with vector embedding similarity to improve semantic relevance alongside exact keyword matching.
 
@@ -25,6 +40,20 @@ The system follows a microservice-based architecture:
 5. The coordinator performs concurrent searches across shards.
 6. Shard results are merged using a Top-K ranking algorithm.
 7. Final ranked documents are returned to the user.
+
+## Evaluation Criteria
+
+**Primary metrics**
+- Query latency — response time under increasing document size and query load.
+- Search relevance — ranking accuracy against expected relevant documents.
+
+**Secondary metrics**
+- Queries processed per second
+- Cache hit ratio
+- System availability
+- Resource utilization (CPU/memory under concurrent load)
+
+## Installation
 
 To run the project locally:
 
