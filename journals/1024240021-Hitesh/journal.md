@@ -4,6 +4,8 @@
 
 ## Work Completed So Far
 
+###Week - 1
+
 ### 1. Study of Distributed Search Engine Architecture
 
 Studied the basic architecture and working principles of a **Distributed Search Engine**. The study focused on understanding how a search system can handle a large collection of documents by distributing data and processing across multiple services.
@@ -18,6 +20,8 @@ The major concepts studied included:
 * Communication between distributed services
 
 Based on this study, the major components of the proposed system were identified, including **Document Ingestion, Text Analyzer, Indexing, Search Shards, Search Coordinator, Ranking, and Caching**.
+
+###Week 2
 
 ### 2. Study of Search Engine Concepts
 
@@ -39,11 +43,15 @@ Started learning and working with **Spring Boot** for developing the backend of 
 
 Initial backend structures and APIs were developed as part of this phase.
 
+###Week 3
+
 ### 4. System Requirements and Workflow Design
 
 Worked on identifying the functional requirements of the system and designing its overall workflow. The workflow was designed to cover the complete process starting from document submission and text processing to indexing, searching, ranking, and displaying the final results.
 
 This helped in establishing a clear understanding of how the different services would interact with each other.
+
+###Week 4
 
 ### 5. Activity Diagram Implementation
 
@@ -64,6 +72,8 @@ It covers major activities such as:
 Created the initial **Entity Relationship (ER) Diagram** for the project. The diagram was prepared to understand and represent the major entities, their attributes, and the relationships between them.
 
 This provided a basic structure for understanding how the data would be organized within the system.
+
+###Week 5
 
 ### 7. Implementation of Text Analyzer Service
 
