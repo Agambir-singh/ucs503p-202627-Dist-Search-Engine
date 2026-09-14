@@ -12,7 +12,7 @@ plugins:
 - git-revision-date-localized
 # - git-committers:
 #     repository: "tiet-unc512/tiet-unc512.github.io"
-- git-authors
+- git-authors 
 - mkdocstrings:
     handlers:
       python:
