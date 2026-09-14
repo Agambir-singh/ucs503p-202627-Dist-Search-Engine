@@ -19,3 +19,9 @@ Project : Distributed Search Engine
 ## Week 5 (Aug 31 - Sept 6):
 - Updated github pages (`/docs/index.md`).
 - updated project proposal.
+
+## Week 6 (Sept 7 - Sept 14):
+- created models
+- reviewed presistence layer and created application.java accordingly
+- added content to prototype report
+- overlooked code directory and managed conflicts
