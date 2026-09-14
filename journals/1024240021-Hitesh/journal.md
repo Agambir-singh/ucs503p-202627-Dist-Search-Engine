@@ -4,7 +4,7 @@
 
 ## Work Completed So Far
 
-###Week - 1
+### Week - 1
 
 ### 1. Study of Distributed Search Engine Architecture
 
@@ -21,7 +21,7 @@ The major concepts studied included:
 
 Based on this study, the major components of the proposed system were identified, including **Document Ingestion, Text Analyzer, Indexing, Search Shards, Search Coordinator, Ranking, and Caching**.
 
-###Week 2
+### Week 2
 
 ### 2. Study of Search Engine Concepts
 
@@ -43,7 +43,7 @@ Started learning and working with **Spring Boot** for developing the backend of 
 
 Initial backend structures and APIs were developed as part of this phase.
 
-###Week 3
+### Week 3
 
 ### 4. System Requirements and Workflow Design
 
@@ -51,7 +51,7 @@ Worked on identifying the functional requirements of the system and designing it
 
 This helped in establishing a clear understanding of how the different services would interact with each other.
 
-###Week 4
+### Week 4
 
 ### 5. Activity Diagram Implementation
 
@@ -73,7 +73,7 @@ Created the initial **Entity Relationship (ER) Diagram** for the project. The di
 
 This provided a basic structure for understanding how the data would be organized within the system.
 
-###Week 5
+### Week 5
 
 ### 7. Implementation of Text Analyzer Service
 
