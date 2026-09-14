@@ -4,10 +4,19 @@
 
 ## Work Completed So Far
 
+<<<<<<< HEAD
 ### 1. Study of Distributed Search Engine Architecture
 
 Studied the basic architecture and working principles of a **Distributed Search Engine**. The study focused on understanding how a search system can handle a large collection of documents by distributing data and processing across multiple services.
 
+=======
+### Week - 1
+
+### 1. Study of Distributed Search Engine Architecture
+
+Studied the basic architecture and working principles of a **Distributed Search Engine**. The study focused on understanding how a search system can handle a large collection of documents by distributing data and processing across multiple services.
+
+>>>>>>> c60d3a3c377ecdc2f72c8cba7257476aae9602f3
 The major concepts studied included:
 
 * Microservices architecture
@@ -19,8 +28,15 @@ The major concepts studied included:
 
 Based on this study, the major components of the proposed system were identified, including **Document Ingestion, Text Analyzer, Indexing, Search Shards, Search Coordinator, Ranking, and Caching**.
 
+<<<<<<< HEAD
 ### 2. Study of Search Engine Concepts
 
+=======
+### Week 2
+
+### 2. Study of Search Engine Concepts
+
+>>>>>>> c60d3a3c377ecdc2f72c8cba7257476aae9602f3
 Studied the basic concepts involved in the internal working of search engines. This included understanding how documents are processed and converted into a searchable format.
 
 The topics covered were:
@@ -39,11 +55,21 @@ Started learning and working with **Spring Boot** for developing the backend of 
 
 Initial backend structures and APIs were developed as part of this phase.
 
+<<<<<<< HEAD
+=======
+### Week 3
+
+>>>>>>> c60d3a3c377ecdc2f72c8cba7257476aae9602f3
 ### 4. System Requirements and Workflow Design
 
 Worked on identifying the functional requirements of the system and designing its overall workflow. The workflow was designed to cover the complete process starting from document submission and text processing to indexing, searching, ranking, and displaying the final results.
 
 This helped in establishing a clear understanding of how the different services would interact with each other.
+<<<<<<< HEAD
+=======
+
+### Week 4
+>>>>>>> c60d3a3c377ecdc2f72c8cba7257476aae9602f3
 
 ### 5. Activity Diagram Implementation
 
@@ -65,6 +91,11 @@ Created the initial **Entity Relationship (ER) Diagram** for the project. The di
 
 This provided a basic structure for understanding how the data would be organized within the system.
 
+<<<<<<< HEAD
+=======
+### Week 5
+
+>>>>>>> c60d3a3c377ecdc2f72c8cba7257476aae9602f3
 ### 7. Implementation of Text Analyzer Service
 
 Implemented the **Text Analyzer Service** using Spring Boot. The service is responsible for processing the input text before it is sent for indexing.
