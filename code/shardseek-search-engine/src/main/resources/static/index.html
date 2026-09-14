@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ShardSeek | Search</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/">Shard<span>Seek</span></a>
+      <div class="online"><i></i> search node online</div>
+    </header>
+    <main>
+      <section class="hero">
+        <p class="eyebrow">SPRING BOOT SEARCH PROTOTYPE</p>
+        <h1>Search your documents.<br /><em>See ranked answers.</em></h1>
+        <p class="lead">
+          Upload text documents and query a persistent inverted index using BM25
+          relevance ranking.
+        </p>
+        <form id="searchForm">
+          <input
+            id="query"
+            placeholder="Search the index…"
+            autocomplete="off"
+          /><button>Search <b>↵</b></button>
+        </form>
+      </section>
+      <section class="metrics">
+        <div>
+          <label>LATENCY</label><strong id="latency">—</strong
+          ><small>latest request</small>
+        </div>
+        <div>
+          <label>DOCUMENTS</label><strong id="documents">0</strong
+          ><small>persisted in H2</small>
+        </div>
+        <div>
+          <label>UNIQUE TERMS</label><strong id="terms">0</strong
+          ><small>inverted-index vocabulary</small>
+        </div>
+        <div>
+          <label>CACHE</label><strong id="cache">0</strong
+          ><small>saved query responses</small>
+        </div>
+      </section>
+      <section class="grid">
+        <aside>
+          <p class="eyebrow">INGESTION PIPELINE</p>
+          <h2>Add source files</h2>
+          <label id="dropzone"
+            ><input
+              id="files"
+              type="file"
+              multiple
+              accept=".txt,.md,.csv,.json,.html,.htm,.xml,.log"
+            /><span>↑</span><b>Drop text files here</b
+            ><small>or browse your computer</small></label
+          >
+          <div class="flow">
+            <p>INDEX PERSISTENCE</p>
+            <div id="shardBars"></div>
+            <small
+              >Documents and keyword frequencies are stored locally. New files
+              clear cached searches.</small
+            >
+          </div>
+          <div class="ingest-status" id="ingestStatus">
+            Waiting for documents
+          </div>
+        </aside>
+        <section class="results">
+          <div class="results-head">
+            <div>
+              <p class="eyebrow">QUERY COORDINATOR</p>
+              <h2 id="title">Ready to search</h2>
+            </div>
+            <small id="meta">Normalize → BM25 → Top-K</small>
+          </div>
+          <div id="cards" class="cards">
+            <div class="empty">
+              <span>⌘</span>
+              <h3>The index is ready</h3>
+              <p>Add documents and search them through the REST API.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+    <dialog id="viewer">
+      <button id="close">×</button>
+      <p class="eyebrow" id="docMeta"></p>
+      <h2 id="docTitle"></h2>
+      <pre id="docBody"></pre>
+    </dialog>
+    <script src="/app.js"></script>
+  </body>
+</html>

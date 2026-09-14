@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: shardseek
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 40MB
+  datasource:
+    url: jdbc:h2:file:./data/shardseek;MODE=PostgreSQL;AUTO_SERVER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
+server:
+  port: 8080
+shardseek:
+  cache-ttl-seconds: 300
