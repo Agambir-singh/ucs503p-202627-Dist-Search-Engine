@@ -1,0 +1,110 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="collaboration" name="Collaboration">
+    <mxGraphModel dx="2591" dy="1380" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1120" pageHeight="560" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#17365d;" value="Distributed Search Engine — Collaboration Diagram" vertex="1">
+          <mxGeometry height="35" width="900" x="-100" y="-140" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="User&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Submits query / views results&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="145" x="-100" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="coord" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" value="Query Coordinator&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Orchestrates search&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="175" x="180" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="cache" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;" value="Redis Cache&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Lookup / store responses&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="160" x="510" y="-10" as="geometry" />
+        </mxCell>
+        <mxCell id="shards" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;" value="Search Shards&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Parallel local index search&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="160" x="520" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="rank" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;" value="Ranking Module&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;BM25 + optional vector score&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="175" x="830" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="results" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="Ranked Top-K Results" vertex="1">
+          <mxGeometry height="70" width="145" x="1170" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="source" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="Content Source&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Raw documents&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="175" x="120" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="indexer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" value="Indexer Service&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Normalize, tokenize, build index&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="180" x="520" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="storage" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="Storage / Inverted Index" vertex="1">
+          <mxGeometry height="70" width="170" x="870" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="user" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.5;" target="coord" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;1. Submit query&lt;/font&gt;">
+          <mxGeometry relative="1" x="-0.037" y="25" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="coord" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.5;" target="cache" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;2. Cache lookup&lt;/font&gt;">
+          <mxGeometry relative="1" x="0.2353" y="-60" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="450" y="215" />
+              <mxPoint x="450" y="30" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="cache" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=block;endFill=1;strokeWidth=1.5;" target="coord" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;3. Cache miss&lt;/font&gt;">
+          <mxGeometry relative="1" x="-0.2113" y="-10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="590" y="-20" />
+              <mxPoint x="267.5" y="-20" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="coord" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.5;" target="shards" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;4. Dispatch query&lt;/font&gt;">
+          <mxGeometry relative="1" x="0.0657" y="10" as="geometry">
+            <mxPoint x="-1" as="offset" />
+            <Array as="points">
+              <mxPoint x="267.5" y="270" />
+              <mxPoint x="570" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="shards" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.5;" target="rank" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;5. Candidate hits&lt;/font&gt;">
+          <mxGeometry relative="1" x="-0.0667" y="25" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="rank" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.5;" target="results" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;6. Merge and Top-K&lt;/font&gt;">
+          <mxGeometry relative="1" x="-0.0909" y="25" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="results" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#2874a6;endArrow=block;endFill=1;strokeWidth=1.5;" target="user" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;7. Return ranked results&lt;/font&gt;">
+          <mxGeometry relative="1" x="-0.2351" y="-10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1240" y="300" />
+              <mxPoint x="-27.5" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="source" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.5;" target="indexer" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;A. Ingest documents&lt;/font&gt;">
+          <mxGeometry relative="1" x="-0.0732" y="25" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="indexer" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.5;" target="storage" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;B. Persist index&lt;/font&gt;">
+          <mxGeometry relative="1" x="-0.0526" y="25" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="indexer" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=block;endFill=1;strokeWidth=1.5;" target="shards" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;C. Update shard indexes&lt;/font&gt;">
+          <mxGeometry relative="1" x="-0.25" y="-80" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="600" y="330" />
+              <mxPoint x="600" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
