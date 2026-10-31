@@ -1,0 +1,64 @@
+title Distributed Search Engine Sequence Diagram
+autoNumber nested
+user [icon: user]
+queryCoord [label: "Query Coordinator Service", color: blue]
+cache [label: "Cache Layer", color: gray]
+shard1 [label: "Search Shard 1", color: green]
+shard2 [label: "Search Shard 2", color: green]
+shardN [label: "Search Shard N", color: green]
+ranking [label: "Ranking Module", color: blue]
+db [label: "Database / Index Storage", icon: postgres, color: gray]
+contentSrc [label: "Content Source"]
+ingestion [label: "Ingestion Service", color: blue]
+indexing [label: "Indexing Service", color: blue]
+
+user > queryCoord: Search query (query text)
+activate queryCoord
+queryCoord > cache: Check cache (query)
+activate cache
+cache --> queryCoord: Cache miss
+deactivate cache
+queryCoord > shard1: Forward query to shards (in parallel)
+activate shard1
+queryCoord > shard2: Forward query to shards (in parallel)
+activate shard2
+queryCoord > shardN: Forward query to shards
+activate shardN
+shard1 --> queryCoord: Partial results (from shard 1)
+deactivate shard1
+shard2 --> queryCoord: Partial results (from shard 2)
+deactivate shard2
+shardN --> queryCoord: Partial results (from shard N)
+deactivate shardN
+queryCoord > ranking: Merge and rank results (Top-K)
+activate ranking
+ranking --> queryCoord: Ranked results
+deactivate ranking
+queryCoord --> user: Final response
+activate cache
+queryCoord > cache: Update cache
+deactivate cache
+deactivate queryCoord
+
+contentSrc > ingestion: Provide documents
+activate ingestion
+ingestion > indexing: Preprocess
+deactivate ingestion
+activate indexing
+indexing > db: Create inverted index
+activate db
+db --> indexing: Index built
+deactivate db
+indexing > shard1: Distribute index (to multiple shards)
+activate shard1
+indexing > shard2: Distribute index (to multiple shards)
+activate shard2
+indexing > shardN: Distribute index (to multiple shards)
+activate shardN
+shard1 --> indexing: Acknowledgement
+deactivate shard1
+shard2 --> indexing: Acknowledgement
+deactivate shard2
+shardN --> indexing: Acknowledgement
+deactivate shardN
+deactivate indexing

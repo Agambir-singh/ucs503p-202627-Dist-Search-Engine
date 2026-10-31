@@ -1,0 +1,121 @@
+title Distributed search engine data model
+
+ingestion_services [color: blue] {
+  id string pk
+  sourceConnector string
+  textProcessorId string fk
+}
+
+text_processors [color: blue] {
+  id string pk
+  normalizationRules "List<Rule>"
+  tokenizer string
+}
+
+documents [color: blue] {
+  id string pk
+  content string
+  metadata Map
+  ingestionServiceId string fk
+  repositoryId string fk
+}
+
+document_repositories [color: blue] {
+  id string pk
+  database string
+}
+
+indexer_services [color: purple] {
+  id string pk
+  indexVersion string
+  textProcessorId string fk
+}
+
+inverted_indexes [color: purple] {
+  id string pk
+  indexerId string fk
+  termStatistics Map
+}
+
+index_shards [color: purple] {
+  id string pk
+  invertedIndexId string fk
+  documentRange Range
+  searchShardId string fk
+}
+
+users [color: green] {
+  id string pk
+  username string
+  email string
+}
+
+queries [color: green] {
+  id string pk
+  userId string fk
+  text string
+  topK int
+  coordinatorId string fk
+}
+
+search_coordinators [color: green] {
+  id string pk
+}
+
+search_shards [color: green] {
+  id string pk
+  coordinatorId string fk
+  endpoint string
+}
+
+query_caches [color: orange] {
+  id string pk
+  queryId string "\"fk, unique\""
+  cacheStore string
+  ttl Duration
+}
+
+search_results [color: orange] {
+  id string pk
+  queryId string fk
+  documentId string fk
+  score double
+  snippet string
+}
+
+ranking_modules [color: orange] {
+  id string pk
+  coordinatorId string fk
+  topK int
+  rankingWeights Map
+}
+
+bm25_rankers [color: orange] {
+  id string pk
+  rankingModuleId string fk
+  k1 double
+  b double
+}
+
+semantic_rankers [color: orange] {
+  id string pk
+  rankingModuleId string fk
+  embeddingModel string
+}
+
+ingestion_services.textProcessorId > text_processors.id
+documents.repositoryId > document_repositories.id
+indexer_services.textProcessorId > text_processors.id
+inverted_indexes.indexerId > indexer_services.id
+index_shards.invertedIndexId > inverted_indexes.id
+queries.userId > users.id
+search_shards.coordinatorId > search_coordinators.id
+query_caches.queryId > queries.id
+search_results.queryId > queries.id
+search_results.documentId > documents.id
+ranking_modules.coordinatorId > search_coordinators.id
+index_shards.searchShardId > search_shards.id
+queries.coordinatorId > search_coordinators.id
+bm25_rankers.rankingModuleId > ranking_modules.id
+semantic_rankers.rankingModuleId > ranking_modules.id
+documents.ingestionServiceId > ingestion_services.id
