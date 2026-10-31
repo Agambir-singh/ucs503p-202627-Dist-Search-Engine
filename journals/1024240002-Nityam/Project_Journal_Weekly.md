@@ -63,3 +63,34 @@ In their place, I added two focused diagrams that better summarize the project a
 - A high-level system architecture diagram showing how the Query Coordinator, Cache, Indexer, Search Shards, and Storage Layer fit together.
 
 This update made the proposal shorter, easier to read, and more visually structured, while keeping all the original problem statement, solution approach, evaluation criteria, and scope sections intact.
+
+
+## Week 6 — Tech Stack Selection, Core Development, and Code Integration
+
+This week focused on choosing the right tools for the prototype and strengthening its core.
+
+Work completed:
+
+- Researched and learned the specific tech stack used in the project (Java, REST APIs, and an H2-backed persistence layer) and identified the most suitable technologies for each part of the system.
+- Reviewed the storage layer and set up the application entry point accordingly.
+- Reviewed the overall code directory and resolved merge conflicts so all contributions fit together cleanly.
+
+Understanding the stack and picking the right tools early made development smoother, and resolving conflicts early helps avoid integration problems in later weeks.
+
+## Week 7 — Architecture Refinements
+
+Focused on refining the system design.
+
+Work completed:
+
+- Made minor changes to the system architecture to improve how the components fit together.
+- Updated the related documentation so it matches the revised design.
+
+Keeping the architecture and documentation in sync helps avoid confusion as the project moves toward deployment.
+
+## Week 8 — Deployment Planning and Diagram Updates
+
+- Added a deployment diagram showing how the different components of the system will be set up and run.
+- Corrected the activity diagram so it accurately reflects the workflow of the system.
+- Explored Docker for deploying the shards in isolated, reproducible environments.
+
