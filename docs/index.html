@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="Distributed Search Engine — scalable search with sharded inverted indexes and hybrid ranking." />
+  <title>Distributed Search Engine | ShardSeek</title>
+  <style>
+    :root{--bg:#080d19;--panel:#111a2d;--panel2:#0d1526;--text:#edf3ff;--muted:#a7b4cc;--accent:#70e1c1;--blue:#7aa7ff;--border:#25334d}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1100px;margin:auto;padding:0 24px}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid #ffffff14}.brand{font-weight:800;letter-spacing:.3px}.navlinks{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+    .hero{padding:92px 0 72px;display:grid;grid-template-columns:1.25fr .75fr;gap:42px;align-items:center}.eyebrow{color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:12px}
+    h1{font-size:clamp(42px,6vw,72px);line-height:1.04;letter-spacing:-2.8px;margin:18px 0}h1 span{color:var(--accent)}.lead{font-size:19px;color:var(--muted);max-width:660px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-block;padding:12px 18px;border-radius:10px;border:1px solid var(--border);font-weight:700}.primary{background:var(--accent);color:#062018;border-color:var(--accent)}.secondary{background:#ffffff08;color:var(--text)}
+    .terminal{background:#050914;border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:0 25px 70px #0005;font:13px/1.9 ui-monospace,SFMono-Regular,Consolas,monospace;color:#b8c8e6;overflow:hidden}.terminal .dots{color:#667795}.terminal .green{color:var(--accent)}.terminal .blue{color:var(--blue)}
+    section{padding:65px 0;border-top:1px solid #ffffff10}.section-head{max-width:700px;margin-bottom:28px}h2{font-size:32px;letter-spacing:-1px;margin:0 0 10px}.section-head p{color:var(--muted);margin:0}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--panel);border:1px solid var(--border);border-radius:15px;padding:22px}.card h3{margin:8px 0;font-size:18px}.card p{color:var(--muted);font-size:14px;margin:0}.icon{font-size:23px}
+    .architecture{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;align-items:stretch;position:relative}.node{background:#101827;border:1px solid #35445c;border-radius:8px;padding:20px 14px;text-align:center;font-size:13px;position:relative}.node:not(:last-child)::after{content:'→';position:absolute;right:-17px;top:50%;transform:translateY(-50%);color:#8b9bb5;font-size:18px;z-index:2}.node strong{display:block;color:var(--accent);font-size:14px;margin-bottom:8px}
+    .tech{display:flex;flex-wrap:wrap;gap:9px}.pill{padding:7px 12px;border:1px solid var(--border);border-radius:999px;background:#ffffff06;color:#c9d7ef;font-size:13px}
+    .cta{background:#122844;border:1px solid #2d4566;border-radius:18px;padding:30px;display:flex;justify-content:space-between;align-items:center;gap:20px}.cta h2{margin-bottom:5px}.cta p{color:var(--muted);margin:0}
+    footer{padding:28px 0;color:#8291ac;font-size:13px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    @media(max-width:800px){.architecture{grid-template-columns:1fr;gap:10px}.node:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-17px;transform:translateX(-50%)}.hero{grid-template-columns:1fr;padding:65px 0}.grid{grid-template-columns:repeat(2,1fr)}.architecture{grid-template-columns:1fr}.navlinks{gap:12px}.navlinks a:nth-child(2){display:none}}
+    @media(max-width:520px){.wrap{padding:0 17px}.grid{grid-template-columns:1fr}h1{letter-spacing:-1.5px}.navlinks{font-size:12px}.cta{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#">⌁ SHARDSEEK</a>
+    <div class="navlinks"><a href="#architecture">Architecture</a><a href="#features">Features</a><a href="#stack">Tech stack</a><a href="#project">Repository</a></div>
+  </nav>
+  <main>
+    <section class="hero" style="border:0">
+      <div>
+        <div class="eyebrow">Distributed Systems · Information Retrieval</div>
+        <h1>Search at scale.<br><span>Built to distribute.</span></h1>
+        <p class="lead">A scalable, production-oriented distributed search platform built with Java and Spring Boot. ShardSeek separates ingestion, indexing, query coordination, and ranking to support parallel retrieval and responsive search.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/Agambir-singh/ucs503p-202627-Dist-Search-Engine" target="_blank" rel="noopener">Explore on GitHub ↗</a>
+          <a class="btn secondary" href="#architecture">View architecture ↓</a>
+        </div>
+      </div>
+      <div class="terminal" aria-label="Illustrative search workflow">
+        <div class="dots">● ● ● &nbsp; shardseek / query</div><br>
+        <span class="green">$</span> search "distributed systems"<br><br>
+        <span class="blue">→ coordinator</span> dispatch query<br>
+        <span class="blue">→ shard-01</span> retrieve candidates<br>
+        <span class="blue">→ shard-02</span> retrieve candidates<br>
+        <span class="blue">→ shard-03</span> retrieve candidates<br>
+        <span class="green">✓</span> merge + rank Top-K<br>
+        <span class="green">✓</span> return ranked results
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="section-head"><div class="eyebrow">Capabilities</div><h2>Designed around search fundamentals</h2><p>Independent components work together to make retrieval parallel, ranking relevance-aware, and repeated queries efficient.</p></div>
+      <div class="grid">
+        <article class="card"><div class="icon">🧩</div><h3>Sharded indexing</h3><p>Distribute index data across independent search shards for parallel query execution and horizontal scaling.</p></article>
+        <article class="card"><div class="icon">⚡</div><h3>Concurrent retrieval</h3><p>The coordinator fans queries out to shards and gathers candidates concurrently.</p></article>
+        <article class="card"><div class="icon">🏆</div><h3>Top-K aggregation</h3><p>Merge shard-level results and return a ranked set of the most relevant documents.</p></article>
+        <article class="card"><div class="icon">🎯</div><h3>Hybrid ranking</h3><p>Combine BM25 keyword scoring with vector similarity for lexical and semantic relevance.</p></article>
+        <article class="card"><div class="icon">🗂️</div><h3>Inverted index</h3><p>Normalize and tokenize documents, then map terms to documents for efficient lookup.</p></article>
+        <article class="card"><div class="icon">🚀</div><h3>Query caching</h3><p>Redis caching helps reduce repeated query processing and improve responsiveness.</p></article>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="section-head"><div class="eyebrow">System overview</div><h2>From documents to ranked results</h2><p>A service-oriented flow keeps ingestion, retrieval, and ranking responsibilities separate.</p></div>
+      <div class="architecture" aria-label="Search architecture flow">
+        <div class="node"><strong>Document Input</strong>Text documents<br>and metadata</div>
+        <div class="node"><strong>Indexer</strong>Tokenization<br>and inverted index</div>
+        <div class="node"><strong>Index Shards</strong>Distributed index<br>partitions</div>
+        <div class="node"><strong>Query Coordinator</strong>Parallel fan-out<br>and result merge</div>
+        <div class="node"><strong>Ranked Results</strong>BM25 + vector<br>Top-K output</div>
+      </div>
+      <p style="color:var(--muted);font-size:14px;margin-top:15px">Query API · Redis query cache · PostgreSQL persistence</p>
+    </section>
+
+    <section id="stack">
+      <div class="section-head"><div class="eyebrow">Technology</div><h2>Tools powering the platform</h2><p>Technologies described in the project repository.</p></div>
+      <div class="tech"><span class="pill">Java</span><span class="pill">Spring Boot</span><span class="pill">Distributed indexing</span><span class="pill">BM25</span><span class="pill">Vector embeddings</span><span class="pill">Redis</span><span class="pill">PostgreSQL</span></div>
+    </section>
+
+    <section id="project">
+      <div class="cta"><div><h2>Explore the source code</h2><p>Read the README, browse implementation, and follow project progress.</p></div><a class="btn primary" href="https://github.com/Agambir-singh/ucs503p-202627-Dist-Search-Engine" target="_blank" rel="noopener">Open repository ↗</a></div>
+    </section>
+  </main>
+  <footer><span>© <span id="year"></span> ShardSeek · Distributed Search Engine</span><span>Built for learning, experimentation & scale.</span></footer>
+</div>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
